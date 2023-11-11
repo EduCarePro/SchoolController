@@ -1,0 +1,14 @@
+
+
+java:S1319!"lThe type of "telephone" should be an interface such as "Set" rather than the implementation "LinkedHashSet".(ëÑİıÿÿÿÿ8…©Íö¼1
+Š
+java:S1319$"hThe type of "email" should be an interface such as "Set" rather than the implementation "LinkedHashSet".(ÌÇáæøÿÿÿÿ8†©Íö¼1
+
+java:S1319]"sThe return type of this method should be an interface such as "Set" rather than the implementation "LinkedHashSet".(ùÿ¦‘8‡©Íö¼1
+
+java:S1319a"lThe type of "telephone" should be an interface such as "Set" rather than the implementation "LinkedHashSet".(ğáé½şÿÿÿÿ8‡©Íö¼1
+
+java:S1319u"sThe return type of this method should be an interface such as "Set" rather than the implementation "LinkedHashSet".(¢‘Ÿá8‡©Íö¼1
+Š
+java:S1319y"hThe type of "email" should be an interface such as "Set" rather than the implementation "LinkedHashSet".(¹¼¢¶üÿÿÿÿ8ˆ©Íö¼1
+c	java:S107"BConstructor has 10 parameters, which is greater than 7 authorized.(åƒŸ£şÿÿÿÿ8™©Íö¼1

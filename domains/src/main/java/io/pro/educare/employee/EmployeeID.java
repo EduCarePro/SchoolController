@@ -1,36 +1,47 @@
 package io.pro.educare.employee;
 
 import io.pro.educare.Identify;
+import io.pro.educare.school.School;
+import io.pro.educare.school.SchoolID;
 
 import java.util.Objects;
 import java.util.UUID;
 
 public class EmployeeID implements Identify<UUID> {
-    private final UUID value;
+  private final UUID value;
 
-    private EmployeeID(final UUID id) {
-        this.value = Objects.requireNonNull(id);
-    }
+  private EmployeeID(final UUID id) {
+    this.value = Objects.requireNonNull(id);
+  }
 
-    public static EmployeeID from(final UUID value) {
-        return new EmployeeID(value);
-    }
+  public static EmployeeID from(final UUID value) {
+    return new EmployeeID(value);
+  }
 
-    @Override
-    public UUID getValue() {
-        return value;
-    }
+  public static EmployeeID from(final Employee aSchool) {
+    return new EmployeeID(aSchool.getId().getValue());
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EmployeeID addressID = (EmployeeID) o;
-        return Objects.equals(value, addressID);
-    }
+  public static EmployeeID unique() {
+    return new EmployeeID(UUID.randomUUID());
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EmployeeID employeeID = (EmployeeID) o;
+    return Objects.equals(value, employeeID.value);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(value);
+  }
+
+  @Override
+  public UUID getValue() {
+    return value;
+  }
 }

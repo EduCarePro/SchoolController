@@ -1,0 +1,15 @@
+
+
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ήδΖ—8–©β»1
+>
+java:S1116"Remove this empty statement.(Ερ­υώÿÿÿÿ8©β»1
+M
+java:S1172"0Remove this unused method parameter "addressID".(ήδΖ—8©β»1
+
+java:S1130-"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(―άεΊψÿÿÿÿ8¦©β»1
+
+java:S11302"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ίι«όÿÿÿÿ8§©β»1
+S
+java:S1144"6Remove this unused private "schoolIdValidator" method.(ήδΖ—8©©β»1
+X
+java:S1144"6Remove this unused private "passwordValidator" method.(―‡ρϋÿÿÿÿ8ϊ¶β»1

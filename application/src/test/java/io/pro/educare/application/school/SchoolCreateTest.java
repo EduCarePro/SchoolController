@@ -1,16 +1,8 @@
 package io.pro.educare.application.school;
 
-import io.pro.educare.TimeZone;
-import io.pro.educare.address.Address;
 import io.pro.educare.address.AddressGateway;
-import io.pro.educare.address.Country;
-import io.pro.educare.application.school.create.CreateSchoolOutput;
-import io.pro.educare.application.school.create.CreateSchoolRole;
 import io.pro.educare.application.school.create.DefaultCreateSchool;
 import io.pro.educare.school.SchoolGateway;
-import io.vavr.control.Either;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,14 +10,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import static org.mockito.Mockito.*;
-
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.*;
 
 @ExtendWith(MockitoExtension.class)
 public class SchoolCreateTest {

@@ -49,7 +49,7 @@ public class DefaultUpdateSchool extends UpdateSchoolUseCase {
     private Either<Notification, UpdateResponseEmployer> update(Employee employee) {
         final var schoolId = employee.getSchoolID();
         return Try(() -> {
-            this.schoolGateway.findById(schoolId.getValue()).orElseThrow(notFoundSchool(schoolId));
+            this.schoolGateway.findById(schoolId.getId()).orElseThrow(notFoundSchool(schoolId));
             return this.employeeGateway.create(employee);
         }).toEither().bimap(NotificationHandler::create, UpdateResponseEmployer::from);
     }

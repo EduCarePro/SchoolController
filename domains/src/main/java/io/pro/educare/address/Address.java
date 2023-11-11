@@ -4,59 +4,51 @@ import io.pro.educare.Entity;
 
 import java.util.UUID;
 
-public class Address extends Entity<UUID> {
-    protected String road;
-    protected String neighborhood;
-    protected Integer number;
-    protected String reference;
-    protected Country country;
+public class Address {
+    private String road;
+    private String neighborhood;
+    private Integer number;
+    private String reference;
+    private Country country;
+    private Double[] geoPoint;
 
-    public Address(String road, String neighborhood, Integer number, String reference, Country country) {
+    public Address(
+            final String road,
+            final String neighborhood,
+            final Integer number,
+            final String reference,
+            final Country country,
+            final Double[] geoPoint
+    ) {
         this.road = road;
         this.neighborhood = neighborhood;
         this.number = number;
         this.reference = reference;
         this.country = country;
-    }
-
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
+        this.geoPoint = geoPoint;
     }
 
     public String getRoad() {
         return road;
     }
 
-    public void setRoad(String road) {
-        this.road = road;
-    }
-
     public String getNeighborhood() {
         return neighborhood;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
     }
 
     public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
     public String getReference() {
         return reference;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public Country getCountry() {
+        return country;
+    }
+
+    public Double[] getGeoPoint() {
+        return geoPoint;
     }
 }

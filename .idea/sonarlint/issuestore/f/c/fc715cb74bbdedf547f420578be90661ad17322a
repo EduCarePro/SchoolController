@@ -1,0 +1,19 @@
+
+‰
+java:S1319?"lThe type of "telephone" should be an interface such as "Set" rather than the implementation "LinkedHashSet".(Ğº©8º‘èà»1
+Š
+java:S1319B"hThe type of "email" should be an interface such as "Set" rather than the implementation "LinkedHashSet".(ÕùùÍüÿÿÿÿ8»‘èà»1
+‰
+java:S1319X"lThe type of "telephone" should be an interface such as "Set" rather than the implementation "LinkedHashSet".(Ğº©8»‘èà»1
+Š
+java:S1319["hThe type of "email" should be an interface such as "Set" rather than the implementation "LinkedHashSet".(ÕùùÍüÿÿÿÿ8»‘èà»1
+J
+java:S54111"(Use a primitive boolean expression here.(»¤•Çıÿÿÿÿ8³×ìà»1
+J
+java:S5411Q"(Use a primitive boolean expression here.(ÌæğÃşÿÿÿÿ8¼‘èà»1
+^	java:S107"BConstructor has 10 parameters, which is greater than 7 authorized.(îù˜Ñ8È‘èà»1
+^	java:S107U"=Method has 10 parameters, which is greater than 7 authorized.(Ÿ˜”üÿÿÿÿ8É‘èà»1
+T
+java:S18540"7Remove this useless assignment to local variable "now".(—ããß8Ã×ìà»1
+E
+java:S14810"(Remove this unused "now" local variable.(—ããß8Å×ìà»1

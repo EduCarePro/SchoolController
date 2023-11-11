@@ -2,7 +2,7 @@ package io.pro.educare.application.school;
 
 import io.pro.educare.Pagination;
 import io.pro.educare.SearchQuery;
-import io.pro.educare.application.school.model.SchoolNeo4jEntity;
+import io.pro.educare.application.school.persistence.SchoolNeo4jEntity;
 import io.pro.educare.application.school.persistence.SchoolNeo4jRepository;
 import io.pro.educare.school.School;
 import io.pro.educare.school.SchoolGateway;
@@ -12,12 +12,13 @@ import org.neo4j.cypherdsl.core.Statement;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.neo4j.core.Neo4jTemplate;
+import org.springframework.stereotype.Component;
 
 import static org.neo4j.cypherdsl.core.Cypher.*;
 
 import java.util.Optional;
 import java.util.UUID;
-
+@Component
 public class SchoolNeo4jGateway implements SchoolGateway {
     protected final SchoolNeo4jRepository schoolNeo4jRepository;
     protected final Neo4jTemplate neo4jTemplate;

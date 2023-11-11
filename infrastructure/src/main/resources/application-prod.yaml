@@ -1,0 +1,24 @@
+spring:
+  data:
+  application:
+    name: SchoolController
+  neo4j:
+    uri: bolt://localhost:7474
+    username: neo4j
+    password: bkgR4kZDaM7Uu8u
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_HOST:http://localhost:8380}/auth/realms/${KEYCLOAK_REALM:master}
+          jwk-set-uri: ${KEYCLOAK_HOST:http://localhost:8380}/auth/realms/${KEYCLOAK_REALM:master}/protocol/openid-connect/certs
+
+
+
+debug: true
+file:
+  upload-dir: images
+keycloak:
+  realm: ${KEYCLOAK_REALM:master}
+  host: ${KEYCLOAK_HOST:http://localhost:8380}
+  

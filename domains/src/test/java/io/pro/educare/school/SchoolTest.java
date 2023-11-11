@@ -2,7 +2,6 @@ package io.pro.educare.school;
 
 import io.pro.educare.address.Address;
 import io.pro.educare.address.Country;
-import io.pro.educare.TimeZone;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 

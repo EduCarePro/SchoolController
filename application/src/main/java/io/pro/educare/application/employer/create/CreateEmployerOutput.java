@@ -12,7 +12,6 @@ public record CreateEmployerOutput(
 
     }
 
-
     public static CreateEmployerOutput with(Employee employee) {
         return new CreateEmployerOutput(employee.getId());
     }

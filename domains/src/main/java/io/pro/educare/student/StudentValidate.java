@@ -1,6 +1,5 @@
 package io.pro.educare.student;
 
-import io.pro.educare.address.AddressID;
 import io.pro.educare.notifications.Notification;
 import io.pro.educare.notifications.NotificationHandler;
 import io.pro.educare.validate.NameParser;
@@ -17,9 +16,8 @@ public class StudentValidate {
     public void validate(Student student, NotificationHandler notification) {
         try {
             this.notification = notification;
-            this.addressValidator(student.getAddressID().getValue());
+            this.addressValidator(student.getAddress());
             this.nameValidator(student.getName());
-            this.passwordValidator(student.getPassword());
         } catch (Exception e) {
             notification.addNotification(new Exception("Internal error!"));
             ;

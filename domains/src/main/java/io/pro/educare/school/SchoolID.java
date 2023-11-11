@@ -16,10 +16,14 @@ public class SchoolID implements Identify<UUID> {
         return new SchoolID(value);
     }
 
-    @Override
-    public UUID getValue() {
-        return value;
+    public static SchoolID from(final School aSchool) {
+        return new SchoolID(aSchool.getId().getValue());
     }
+
+    public static SchoolID unique() {
+        return new SchoolID(UUID.randomUUID());
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -34,4 +38,8 @@ public class SchoolID implements Identify<UUID> {
         return Objects.hash(value);
     }
 
+    @Override
+    public UUID getValue() {
+        return value;
+    }
 }

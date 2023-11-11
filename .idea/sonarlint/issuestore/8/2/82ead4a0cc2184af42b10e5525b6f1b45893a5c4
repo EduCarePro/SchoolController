@@ -1,0 +1,38 @@
+
+m
+java:S1192%"KDefine a constant instead of duplicating this literal "/school/**" 4 times.(‡É­½úÿÿÿÿ8öã„ú»1
+r
+java:S1192"VDefine a constant instead of duplicating this literal "educare_school_create" 4 times.(é¼÷\8‰Üßù»1
+o
+java:S1192*"MDefine a constant instead of duplicating this literal "/employee/**" 4 times.(€¢Øûÿÿÿÿ8÷ã„ú»1
+t	java:S116"XRename this field "EDUCARE_ADMIN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â‰û™8“Üßù»1
+{	java:S116"`Rename this field "EDUCARE_SCHOOL_CREATE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¼÷\8“Üßù»1
+ƒ	java:S116"bRename this field "EDUCARE_SCHOOL_RETRIEVE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡«üÔøÿÿÿÿ8“Üßù»1
+{	java:S116"`Rename this field "EDUCARE_SCHOOL_DELETE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü®žw8”Üßù»1
+{	java:S116"`Rename this field "EDUCARE_SCHOOL_UPDATE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãï[8”Üßù»1
+ƒ	java:S116"bRename this field "EDUCARE_EMPLOYEE_CREATE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·³ÿçûÿÿÿÿ8”Üßù»1
+…	java:S116"dRename this field "EDUCARE_EMPLOYEE_RETRIEVE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ÚËâûÿÿÿÿ8”Üßù»1
+}	java:S116"bRename this field "EDUCARE_EMPLOYEE_DELETE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ‡ý}8”Üßù»1
+~	java:S116"bRename this field "EDUCARE_EMPLOYEE_UPDATE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìø×à8”Üßù»1
+>
+java:S1170"!Make this final field static too.(â‰û™8”Üßù»1
+=
+java:S1170"!Make this final field static too.(é¼÷\8”Üßù»1
+C
+java:S1170"!Make this final field static too.(¡«üÔøÿÿÿÿ8”Üßù»1
+=
+java:S1170"!Make this final field static too.(Ü®žw8”Üßù»1
+=
+java:S1170"!Make this final field static too.(ãï[8”Üßù»1
+C
+java:S1170"!Make this final field static too.(·³ÿçûÿÿÿÿ8”Üßù»1
+C
+java:S1170"!Make this final field static too.(¤ÚËâûÿÿÿÿ8”Üßù»1
+=
+java:S1170"!Make this final field static too.( ‡ý}8”Üßù»1
+>
+java:S1170"!Make this final field static too.(ìø×à8”Üßù»1
+]
+java:S1068";Remove this unused "EDUCARE_SCHOOL_RETRIEVE" private field.(¡«üÔøÿÿÿÿ8žÜßù»1
+U
+java:S1068"9Remove this unused "EDUCARE_SCHOOL_DELETE" private field.(Ü®žw8žÜßù»1

@@ -1,11 +1,11 @@
 package io.pro.educare.employee;
 
-import io.pro.educare.Entity;
+import io.pro.educare.AggregateRoot;
 import io.pro.educare.address.Address;
+import io.pro.educare.notifications.Notification;
 import io.pro.educare.notifications.NotificationHandler;
 import io.pro.educare.role.RoleGroup;
 import io.pro.educare.transport.Transport;
-import io.pro.educare.Production;
 import io.pro.educare.school.SchoolID;
 
 import java.time.Instant;
@@ -14,169 +14,157 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.UUID;
 
-@Production(Production.Stage.IN_PRODUCTION)
-public class Employee extends Entity<UUID> {
+public class Employee extends AggregateRoot<EmployeeID> {
 
-    protected UUID id;
-    protected String name;
-    protected String email;
-    protected Transport transport;
-    protected String telephone;
-    protected String numberOfCountrySerial;
-    protected SchoolID schoolID;
-    protected LocalDate dateOfBirth;
-    protected Address address;
-    protected RoleGroup roleGroup;
-    protected Instant createdAt;
-    protected Instant updateAt;
-    protected Instant deletedAt;
+  private String name;
+  private String email;
+  private Transport transport;
+  private String telephone;
+  private String numberOfCountrySerial;
+  private SchoolID schoolID;
+  private LocalDate dateOfBirth;
+  private Address address;
+  private RoleGroup roleGroup;
+  private Boolean isActive;
+  private Instant createdAt;
+  private Instant updateAt;
+  private Instant deletedAt;
 
-    public void validator(NotificationHandler notification) {
-        new EmployeeValidate().validate(this, notification);
-    }
+  private Employee(EmployeeID id, String name, String email, Transport transport, String telephone, String numberOfCountrySerial, SchoolID schoolID, LocalDate dateOfBirth, Address address, RoleGroup role, Boolean isActive, Instant createdAt, Instant updatedAt, Instant deletedAt) {
+    super(id);
+    this.name = name;
+    this.email = email;
+    this.transport = transport;
+    this.telephone = telephone;
+    this.numberOfCountrySerial = numberOfCountrySerial;
+    this.schoolID = schoolID;
+    this.dateOfBirth = dateOfBirth;
+    this.address = address;
+    this.roleGroup = role;
+    this.isActive = isActive;
+    this.createdAt = createdAt;
+    this.updateAt = updatedAt;
+    this.deletedAt = deletedAt;
+  }
 
-    public static Employee newEemployee(String name, String email, Transport transport, String telephone, String numberOfCountrySerial, SchoolID schoolID, LocalDate dateOfBirth, Address address, RoleGroup roleGroup) {
-        return new Employee(
-                name,
-                email,
-                transport,
-                telephone,
-                numberOfCountrySerial,
-                schoolID,
-                dateOfBirth,
-                address,
-                roleGroup
-        );
-    }
+  public static Employee newEemployee(String name, String email, Transport transport, String telephone, String numberOfCountrySerial, SchoolID schoolID, LocalDate dateOfBirth, Address address, RoleGroup roleGroup, Boolean isActive) {
+    final var id = EmployeeID.unique();
+    final var now = Instant.now();
+    final var deletedAt = isActive ? null : now;
+    return new Employee(
+      id,
+      name,
+      email,
+      transport,
+      telephone,
+      numberOfCountrySerial,
+      schoolID,
+      dateOfBirth,
+      address,
+      roleGroup,
+      isActive,
+      now,
+      now,
+      deletedAt
+    );
+  }
 
-
-    public Employee(String name, String email, Transport transport, String telephone, String numberOfCountrySerial, SchoolID schoolID, LocalDate dateOfBirth, Address address, RoleGroup role) {
-        this.name = name;
-        this.email = email;
-        this.transport = transport;
-        this.telephone = telephone;
-        this.numberOfCountrySerial = numberOfCountrySerial;
-        this.schoolID = schoolID;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.roleGroup = role;
-        this.createdAt = LocalDateTime.now().atOffset(ZoneOffset.of(address.getCountry().getAlpha2Code())).toInstant();
-        this.updateAt = LocalDateTime.now().atOffset(ZoneOffset.of(address.getCountry().getAlpha2Code())).toInstant();
-    }
-
-    public Employee update(String name, String email, Transport transport, String telephone, String password, String numberOfCountrySerial, SchoolID schoolID, LocalDate dateOfBirth, Address address, RoleGroup role) {
-        this.setName(name);
-        this.setEmail(email);
-        this.setTransport(transport);
-        this.setTelephone(telephone);
-        this.setNumberOfCountrySerial(numberOfCountrySerial);
-        this.setSchoolID(schoolID);
-        this.setDateOfBirth(dateOfBirth);
-        this.setAddress(address);
-        this.setRoleGroup(role);
-        this.updateAt = LocalDateTime.now().atOffset(ZoneOffset.of(address.getCountry().getAlpha2Code())).toInstant();
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Transport getTransport() {
-        return transport;
-    }
-
-    public void setTransport(Transport transport) {
-        this.transport = transport;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public RoleGroup getRoleGroup() {
-        return roleGroup;
-    }
+  @Override
+  public void validator(Notification notification) {
+    new EmployeeValidate().validate(this, notification);
+  }
 
 
-    public String getNumberOfCountrySerial() {
-        return numberOfCountrySerial;
-    }
+  public Employee update(
+    final String name,
+    final String email,
+    final Transport transport,
+    final String telephone,
+    final String numberOfCountrySerial,
+    final SchoolID schoolID,
+    final LocalDate dateOfBirth,
+    final Address address,
+    final RoleGroup role
+  ) {
+    if (isActive) {
+      activate();
+    } else deactivate();
+    
+    this.name = name;
+    this.email = email;
+    this.transport = transport;
+    this.telephone = telephone;
+    this.numberOfCountrySerial = numberOfCountrySerial;
+    this.schoolID = schoolID;
+    this.dateOfBirth = dateOfBirth;
+    this.address = address;
+    this.roleGroup = role;
+    this.updateAt = Instant.now();
+    return this;
 
-    public void setNumberOfCountrySerial(String numberOfCountrySerial) {
-        this.numberOfCountrySerial = numberOfCountrySerial;
-    }
+  }
 
-    public SchoolID getSchoolID() {
-        return schoolID;
-    }
+  public void activate() {
+    this.isActive = true;
+    this.updateAt = Instant.now();
+    this.deletedAt = null;
+  }
 
-    public void setSchoolID(SchoolID schoolID) {
-        this.schoolID = schoolID;
-    }
+  public void deactivate() {
+    this.isActive = false;
+    this.updateAt = Instant.now();
+    this.deletedAt = Instant.now();
+  }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public Address getAddress() {
-        return address;
-    }
+  public Transport getTransport() {
+    return transport;
+  }
 
-    public void setAddress(Address addressID) {
-        this.address = addressID;
-    }
+  public String getTelephone() {
+    return telephone;
+  }
 
+  public String getNumberOfCountrySerial() {
+    return numberOfCountrySerial;
+  }
 
-    public void setRoleGroup(RoleGroup roleGroup) {
-        this.roleGroup = roleGroup;
-    }
+  public SchoolID getSchoolID() {
+    return schoolID;
+  }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
+  public LocalDate getDateOfBirth() {
+    return dateOfBirth;
+  }
 
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
+  public Address getAddress() {
+    return address;
+  }
 
-    public Instant getUpdateAt() {
-        return updateAt;
-    }
+  public RoleGroup getRoleGroup() {
+    return roleGroup;
+  }
 
-    public void setUpdateAt(Instant updateAt) {
-        this.updateAt = updateAt;
-    }
+  public Boolean getActive() {
+    return isActive;
+  }
 
-    public Instant getDeletedAt() {
-        return deletedAt;
-    }
+  public Instant getCreatedAt() {
+    return createdAt;
+  }
 
-    public void setDeletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
-    }
+  public Instant getUpdateAt() {
+    return updateAt;
+  }
+
+  public Instant getDeletedAt() {
+    return deletedAt;
+  }
 }

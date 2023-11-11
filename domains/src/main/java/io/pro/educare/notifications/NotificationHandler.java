@@ -1,8 +1,6 @@
 package io.pro.educare.notifications;
 
 
-import io.pro.educare.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +16,12 @@ public class NotificationHandler implements Notification {
     }
 
     @Override
-    public void addNotification(@NotNull Exception exception) {
+    public void addNotification(Exception exception) {
         exceptionList.add(exception);
     }
 
     @Override
-    public void addNotification(@NotNull List<Exception> exception) {
+    public void addNotification(List<Exception> exception) {
         exception.addAll(exception);
     }
 
@@ -39,7 +37,7 @@ public class NotificationHandler implements Notification {
 
 
     @Override
-    public Exception getException(@NotNull int exception) {
+    public Exception getException(int exception) {
         return exceptionList.get(exception);
     }
 

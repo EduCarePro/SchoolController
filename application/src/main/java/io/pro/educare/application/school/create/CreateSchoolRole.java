@@ -1,8 +1,6 @@
 package io.pro.educare.application.school.create;
 
 import io.pro.educare.address.Address;
-import io.pro.educare.TimeZone;
-import io.pro.educare.address.Address;
 
 import java.time.Instant;
 import java.util.LinkedHashSet;

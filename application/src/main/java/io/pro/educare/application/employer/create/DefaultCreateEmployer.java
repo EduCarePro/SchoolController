@@ -19,7 +19,6 @@ import static io.vavr.API.Try;
 
 public class DefaultCreateEmployer extends CreateEmployerUseCase {
     public SchoolGateway schoolGateway;
-    public AddressGateway addressGateway;
     public EmployeeGateway employeeGateway;
 
     @Override
@@ -51,17 +50,9 @@ public class DefaultCreateEmployer extends CreateEmployerUseCase {
         return notification.hasNotification() ? Either.left(notification) : create(aEmployee);
     }
 
-    public Supplier<NotFoundException> notFoundAddress(AddressID addressID) {
-        return () -> NotFoundException.with(Address.class, addressID);
-    }
-
-    public Address toAddress(AddressID addressID) throws NotFoundException {
-        return addressID == null ? null : this.addressGateway.findById(addressID.getValue())
-                .orElseThrow(notFoundAddress(addressID));
-    }
 
     public School toSchool(SchoolID schoolID) throws NotFoundException {
-        return schoolID == null ? null : this.schoolGateway.findById(schoolID.getValue())
+        return schoolID == null ? null : this.schoolGateway.findById(schoolID.getId())
                 .orElseThrow(notFoundSchool(schoolID));
     }
 
